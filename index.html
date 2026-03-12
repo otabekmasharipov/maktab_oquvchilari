@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://cdnjs.cloudflare.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+  
+  <!-- Telegram WebApp Security -->
+  <meta name="telegram:channel" content="@your_channel" />
+  
+  <title>O'quvchi Rezyume Yaratuvchi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">📋 RezyumeBot</div>
+      <p class="tagline">Maktab o'quvchilari uchun shaxsiy rezyume yarating!</p>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="page-grid">
+
+      <!-- LEFT: FORM -->
+      <div class="form-col">
+
+        <!-- BLOCK 1: Shaxsiy ma'lumot -->
+        <div class="block">
+          <div class="block-title">👤 Shaxsiy Ma'lumotlar</div>
+          <div class="form-group">
+            <label>Ism va Familiya <span class="req">*</span></label>
+            <input type="text" id="fullName" placeholder="Masalan: Sardor Karimov" autocomplete="off" maxlength="50" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Sinf <span class="req">*</span></label>
+              <input type="text" id="grade" placeholder="10-А" maxlength="20" />
+            </div>
+            <div class="form-group">
+              <label>Maktab <span class="req">*</span></label>
+              <input type="text" id="school" placeholder="45-maktab, Toshkent" maxlength="100" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Telefon</label>
+              <input type="tel" id="phone" placeholder="+998 90 123 45 67" maxlength="20" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="email" placeholder="sardor@email.com" maxlength="100" />
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 2: Rasm -->
+        <div class="block">
+          <div class="block-title">📸 Profil Rasmi</div>
+          <div class="photo-row">
+            <div class="photo-upload-area" id="photoUploadArea">
+              <img id="photoPreview" src="" alt="" />
+              <div class="upload-placeholder" id="uploadPlaceholder">
+                <span class="upload-icon">📷</span>
+                <p>Rasm yuklang</p>
+                <small>JPG, PNG • max 5MB</small>
+              </div>
+              <input type="file" id="photoInput" accept="image/*" hidden />
+            </div>
+            <div class="photo-hint">
+              <p>Rasmingizni bosib yoki sudrab tashlang</p>
+              <button type="button" class="btn-upload" id="uploadBtn">📁 Rasm tanlash</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 3: Qiziqishlar -->
+        <div class="block">
+          <div class="block-title">❤️ Qiziqishlar</div>
+          <p class="hint">Bir nechtasini tanlash mumkin:</p>
+          <div class="chips-grid" id="interestsGrid">
+            <div class="chip" data-value="Matematika">➕ Matematika</div>
+            <div class="chip" data-value="Fizika">⚡ Fizika</div>
+            <div class="chip" data-value="Kimyo">🧪 Kimyo</div>
+            <div class="chip" data-value="Biologiya">🌿 Biologiya</div>
+            <div class="chip" data-value="Informatika">💻 Informatika</div>
+            <div class="chip" data-value="Ingliz tili">🌍 Ingliz tili</div>
+            <div class="chip" data-value="Tarix">📜 Tarix</div>
+            <div class="chip" data-value="Adabiyot">📖 Adabiyot</div>
+            <div class="chip" data-value="San'at">🎨 San'at</div>
+            <div class="chip" data-value="Musiqa">🎵 Musiqa</div>
+            <div class="chip" data-value="Sport">⚽ Sport</div>
+            <div class="chip" data-value="Geografiya">🗺️ Geografiya</div>
+            <div class="chip" data-value="Psixologiya">🧠 Psixologiya</div>
+            <div class="chip" data-value="Iqtisodiyot">📊 Iqtisodiyot</div>
+            <div class="chip" data-value="Texnologiya">🔧 Texnologiya</div>
+            <div class="chip" data-value="Kino va teatr">🎬 Kino va teatr</div>
+          </div>
+          <div class="form-group mt">
+            <label>Boshqa qiziqishlar (ixtiyoriy)</label>
+            <input type="text" id="extraInterests" placeholder="Masalan: robotika, ovqat pishirish..." maxlength="200" />
+          </div>
+        </div>
+
+        <!-- BLOCK 4: Hobbilar -->
+        <div class="block">
+          <div class="block-title">🎯 Hobbilar</div>
+          <p class="hint">Bo'sh vaqtingizda nima qilishni yaxshi ko'rasiz?</p>
+          <div class="chips-grid" id="hobbiesGrid">
+            <div class="chip" data-value="Kitob o'qish">📚 Kitob o'qish</div>
+            <div class="chip" data-value="Rasm chizish">🖌️ Rasm chizish</div>
+            <div class="chip" data-value="Futbol">⚽ Futbol</div>
+            <div class="chip" data-value="Basketbol">🏀 Basketbol</div>
+            <div class="chip" data-value="Suzish">🏊 Suzish</div>
+            <div class="chip" data-value="Musiqa tinglash">🎧 Musiqa tinglash</div>
+            <div class="chip" data-value="Gitara chalish">🎸 Gitara chalish</div>
+            <div class="chip" data-value="Raqs">💃 Raqs</div>
+            <div class="chip" data-value="Sayr qilish">🚶 Sayr qilish</div>
+            <div class="chip" data-value="Dasturlash">👨‍💻 Dasturlash</div>
+            <div class="chip" data-value="Video o'yin">🎮 Video o'yin</div>
+            <div class="chip" data-value="Suratga olish">📷 Suratga olish</div>
+            <div class="chip" data-value="Ovqat pishirish">🍳 Ovqat pishirish</div>
+            <div class="chip" data-value="Yoga">🧘 Yoga</div>
+            <div class="chip" data-value="Shaxmat">♟️ Shaxmat</div>
+            <div class="chip" data-value="Blogging">✍️ Blogging</div>
+          </div>
+          <div class="form-group mt">
+            <label>Boshqa hobbilar (ixtiyoriy)</label>
+            <input type="text" id="extraHobbies" placeholder="Masalan: drone uchirish, origami..." maxlength="200" />
+          </div>
+        </div>
+
+        <!-- BLOCK 5: Fanlar va kasb -->
+        <div class="block">
+          <div class="block-title">🏆 Sevimli Fanlar va Kasb Orzusi</div>
+          <p class="hint">Qaysi fanlarni eng yaxshi ko'rasiz?</p>
+          <div class="chips-grid" id="subjectsGrid">
+            <div class="chip" data-value="Matematika">➕ Matematika</div>
+            <div class="chip" data-value="Fizika">⚡ Fizika</div>
+            <div class="chip" data-value="Kimyo">🧪 Kimyo</div>
+            <div class="chip" data-value="Biologiya">🌿 Biologiya</div>
+            <div class="chip" data-value="Informatika">💻 Informatika</div>
+            <div class="chip" data-value="Ingliz tili">🌍 Ingliz tili</div>
+            <div class="chip" data-value="Ona tili">📝 Ona tili</div>
+            <div class="chip" data-value="Tarix">📜 Tarix</div>
+            <div class="chip" data-value="Adabiyot">📖 Adabiyot</div>
+            <div class="chip" data-value="Geografiya">🗺️ Geografiya</div>
+          </div>
+          <div class="form-group mt">
+            <label>Kasb orzuingiz <span class="req">*</span></label>
+            <input type="text" id="dream" placeholder="Masalan: Dasturchi, Shifokor, Muhandis..." maxlength="100" />
+          </div>
+          <div class="form-group">
+            <label>O'zingiz haqingizda (bio)</label>
+            <textarea id="bio" rows="3" placeholder="Maqsadlarim, kuchli tomonlarim..." maxlength="500"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: PREVIEW -->
+      <div class="preview-col">
+        <div class="preview-sticky">
+          <div class="preview-header">
+            <span>👁️ Jonli Ko'rinish</span>
+            <button type="button" class="btn-print" id="printBtn">⬇️ PDF saqlash</button>
+          </div>
+          <!-- This div is exported to PDF -->
+          <div id="resumeExport">
+            <div class="resume-preview" id="resumePreview">
+              <div class="preview-empty" id="previewEmpty">
+                <div class="preview-empty-icon">📄</div>
+                <p>Ma'lumotlarni kiriting —<br>rezyume <strong>real vaqtda</strong> yangilanadi</p>
+              </div>
+              <!-- Resume content rendered here -->
+              <div id="rvContent" style="display:none;">
+                <div class="rv-header">
+                  <div id="rvAvatar" class="rv-avatar-placeholder">👤</div>
+                  <div class="rv-info">
+                    <h1 id="rvName">—</h1>
+                    <p id="rvGradeSchool">—</p>
+                    <div class="rv-contact" id="rvContact"></div>
+                  </div>
+                </div>
+                <div class="rv-body">
+                  <div class="rv-section" id="rvBioSection" style="display:none;">
+                    <h3>📝 Men haqimda</h3>
+                    <p id="rvBio"></p>
+                  </div>
+                  <div class="rv-section">
+                    <h3>🏆 Kasb Orzusi</h3>
+                    <p id="rvDream">—</p>
+                  </div>
+                  <div class="rv-section">
+                    <h3>❤️ Qiziqishlar</h3>
+                    <div class="rv-tags" id="rvInterests"></div>
+                  </div>
+                  <div class="rv-section">
+                    <h3>🎯 Hobbilar</h3>
+                    <div class="rv-tags" id="rvHobbies"></div>
+                  </div>
+                  <div class="rv-section">
+                    <h3>📚 Sevimli Fanlar</h3>
+                    <div class="rv-tags" id="rvSubjects"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 RezyumeBot — Maktab o'quvchilari uchun</p>
+  </footer>
+
+  <!-- html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
