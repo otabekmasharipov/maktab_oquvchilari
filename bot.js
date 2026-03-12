@@ -12,7 +12,7 @@ const { Telegraf, Scenes, Markup, WizardScene } = require('telegraf');
 
 // Replace with your actual values
 const BOT_TOKEN = process.env.BOT_TOKEN || '8367817177:AAEkkteQ7h-TUn3SCW47mDlQ1ptw8pt9_Mg';
-const SITE_URL = process.env.SITE_URL || 'https://your-site.uz';
+const SITE_URL = process.env.SITE_URL || 'https://otabekmasharipov.github.io/maktab_oquvchilari/';
 
 // ===== VALIDATION LIMITS =====
 const LIMITS = {
@@ -273,3 +273,4 @@ process.once('SIGTERM', () => {
   console.log('\n⏹️ Bot to\'xtatildi');
   bot.stop('SIGTERM');
 });
+
